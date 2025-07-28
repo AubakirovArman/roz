@@ -71,10 +71,15 @@ yarn install
 cp .env.local.example .env.local
 ```
 
-4. **Voeg je OpenAI API key toe** aan `.env.local`:
+4. **Voeg je OpenAI API key en toegangstoken toe** aan `.env.local`:
 ```env
 OPENAI_API_KEY=sk-your_openai_api_key_here
+CHAT_ACCESS_TOKEN=roz-chat-2024
 ```
+
+**Belangrijk**: 
+- Vervang `sk-your_openai_api_key_here` door je echte OpenAI API-sleutel
+- Wijzig `roz-chat-2024` naar je gewenste toegangstoken voor chat toegang
 
 5. **Start de development server**:
 ```bash
@@ -123,6 +128,33 @@ Ga naar [http://localhost:3000](http://localhost:3000) in je browser
    - Update TTS instellingen in `src/app/api/tts/route.ts`
 
 ## 🔧 API Documentatie
+
+### Authenticatie Endpoint
+
+#### POST /api/auth
+Verifieer toegangstoken voor chat toegang
+
+**Request Body**:
+```json
+{
+  "token": "roz-chat-2024"
+}
+```
+
+**Response (Success)**:
+```json
+{
+  "success": true,
+  "message": "Toegang verleend"
+}
+```
+
+**Response (Error)**:
+```json
+{
+  "error": "Ongeldig toegangstoken"
+}
+```
 
 ### Chat Endpoints
 
@@ -320,6 +352,12 @@ CMD ["npm", "start"]
 
 ## 🔒 Beveiliging & Privacy
 
+### Toegangsbeheer
+- **Token-gebaseerde authenticatie**: Alleen gebruikers met geldig token krijgen toegang
+- **Beveiligde cookies**: Authenticatietoken wordt veilig opgeslagen in HTTP-only cookies
+- **Middleware bescherming**: Automatische controle van toegangsrechten op alle beveiligde routes
+- **Uitlog functionaliteit**: Gebruikers kunnen veilig uitloggen en tokens wissen
+
 ### Privacy Principes
 - **Geen Persoonlijke Data**: Geen namen, emails of andere identificeerbare informatie
 - **Sessie-gebaseerd**: Alleen tijdelijke sessie-IDs
@@ -337,6 +375,7 @@ CMD ["npm", "start"]
 - Transparante privacy policy
 - Recht op vergetelheid (sessies zijn tijdelijk)
 - Geen cookies voor tracking
+- **Toegangscontrole**: Alleen geautoriseerde gebruikers hebben toegang tot de chat
 
 ## 🧪 Testing
 
