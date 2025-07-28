@@ -90,10 +90,15 @@ Ga naar [http://localhost:3000](http://localhost:3000) in je browser
 
 ### Voor Gebruikers
 
-1. **Start een Gesprek**:
+1. **Toegang tot de Chat**:
    - Ga naar de hoofdpagina
-   - Begin direct met typen (geen registratie nodig)
+   - Voer het toegangstoken in op de inlogpagina
+   - Na succesvolle authenticatie krijg je toegang tot de chat
+
+2. **Start een Gesprek**:
+   - Begin direct met typen na authenticatie
    - Ontvang een unieke sessie-ID automatisch
+   - Gebruik "Uitloggen" om het token te wijzigen of uit te loggen
 
 2. **Audio Modus**:
    - Klik op "🔊 Audio UIT" om audio in te schakelen
@@ -203,10 +208,21 @@ Haal alle feedback op (voor dashboard)
 # Verplicht
 OPENAI_API_KEY=sk-your_openai_api_key_here
 
+# Chat Toegangstoken (verplicht)
+CHAT_ACCESS_TOKEN=roz-chat-2024
+
 # Optioneel
 NEXT_PUBLIC_APP_NAME=Roz
 NEXT_PUBLIC_APP_DESCRIPTION=Nederlandse AI Chatbot voor Jongeren
 ```
+
+### 🔐 Toegangsbeheer
+
+De applicatie is beveiligd met een tokensysteem:
+- Gebruikers moeten een geldig toegangstoken invoeren om toegang te krijgen tot de chat
+- Het token wordt ingesteld via de `CHAT_ACCESS_TOKEN` omgevingsvariabele
+- Na succesvolle authenticatie wordt het token opgeslagen in een cookie
+- Gebruikers kunnen uitloggen via de "Uitloggen" knop in de interface
 
 ### Chatbot Persona Aanpassen
 
