@@ -527,10 +527,7 @@ copies or substantial portions of the Software.
 - **Discussions**: Voor vragen en community support
 - **Wiki**: Voor uitgebreide documentatie
 
-### Professional Support
-Voor professionele ondersteuning of custom implementaties:
-- Email: support@roz-ai.nl
-- Website: [www.roz-ai.nl](https://www.roz-ai.nl)
+
 
 ### Contributing
 We verwelkomen bijdragen van de community! Zie de [CONTRIBUTING.md](CONTRIBUTING.md) voor details.
